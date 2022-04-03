@@ -44,9 +44,7 @@
                 class="fa"
               ></i>
             </span>
-            <span class="text text-truncate d-none d-md-block"
-              >In Bearbeitung</span
-            >
+            <span class="text text-truncate d-none d-md-block">In Bearbeitung</span>
           </div>
           <div
             :class="{

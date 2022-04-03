@@ -1,6 +1,27 @@
 <template>
   <b-container fluid>
     <!-- Container -->
+    <!-- NAVBAR-->
+<nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a href v-on:click="index" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="@/assets/logo.svg" width="45" alt="" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">Refundable</span>
+    </a>
+
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a href v-on:click="index" class="nav-link">Home </a></li>
+        <li class="nav-item"><a href v-on:click="accountView" class="nav-link">Konto <span class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a href v-on:click="logout" class="nav-link">Abmelden</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <b-row id="index-row" align-h="center" align-v="center">
       <!-- Row -->
       <!-- <b-col class="d-block d-md-none" cols="12">
@@ -147,6 +168,24 @@
       </b-col>
 
       <!-- DASH PC -->
+  <b-container fluid>
+    <b-row align-h="center">
+      <b-col cols="12">
+        <b-container fluid>
+          <b-row>
+            <b-col cols="12">
+              <!-- Verzeichnisanzeige -->
+              <b-breadcrumb
+                style="background-color: white"
+                :items="items"
+              ></b-breadcrumb>
+            </b-col>
+          </b-row>
+           </b-container>
+      </b-col>
+    </b-row>
+  </b-container>
+  
       <b-col id="dash-main-cont" class="d-none d-md-block" cols="12" md="4">
         <b-container>
           <b-row
@@ -235,7 +274,7 @@
       </b-col>
 
       <!-- MEDIA - ONLY ON PC -->
-      <b-col id="media-main-cont" cols="12" md="4" class="d-none d-md-block">
+      <b-col id="media-main-cont" cols="12" md="4" class="d-none d-md-block" style="margin-top: -10%">
         <b-container class="">
           <b-row id="media-row" align-h="center" align-v="center">
             <!--<img
@@ -248,14 +287,13 @@
               data-placement="top"
               title="Klicken Sie hier um sich ausloggen zu können!"
             />-->
-            <!-- Refundable Logo -->
-            <img src="@/assets/logo.svg" alt="" id="logo" class="img-fluid" />
             <!-- Dashboard Illustration -->
             <img
               src="@/assets/brainstorming.jpg"
               class="img-fluid"
               id="dash-img"
               alt="Illustration von arbeitenden Personen"
+              style="margin-top: 50%"
             />
             <!-- Administrator Ansicht Button -->
             <b-button
@@ -265,13 +303,6 @@
               variant="outline-info"
               style="margin-right:1rem"
               >Admin Ansicht</b-button
-            >
-            <!-- Logout Button -->
-            <b-button
-              v-on:click="logout"
-              class="shadow-lg"
-              variant="outline-danger"
-              >Abmelden</b-button
             >
           </b-row>
         </b-container>
@@ -454,6 +485,14 @@ export default {
     currentApplication() {
       if (this.checkClick()) {
         this.changeComponent("CurrentApplication");
+      }
+    },
+    /**
+     * Diese Methode leitet den Benutzer auf die AccountView-Seite weiter
+     */
+    accountView() {
+      if (this.checkClick()) {
+        this.changeComponent("AccountView");
       }
     },
     /**
