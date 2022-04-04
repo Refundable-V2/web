@@ -52,6 +52,16 @@
       v-bind:refresh_token="refresh_token"
       v-bind:user="user"
     />
+    <AccountView
+      v-if="currentComponent == 'AccountView'"
+      v-on:change-component="changeComponent"
+      v-on:updateToken="updateToken"
+      v-on:logout="logout"
+      v-bind:url="url"
+      v-bind:token="token"
+      v-bind:refresh_token="refresh_token"
+      v-bind:user="user"
+    />
     <School
       v-if="currentComponent == 'School'"
       v-on:change-component="changeComponent"
@@ -170,6 +180,7 @@ import Login from "@/components/Login.vue";
 import NewApplication from "@/components/NewApplication.vue";
 import AllApplication from "@/components/AllApplication.vue";
 import CurrentApplication from "@/components/CurrentApplication.vue";
+import AccountView from "@/components/AccountView.vue";
 import ApplicationView from "@/components/ApplicationView.vue";
 import ApplicationSearch from "@/components/ApplicationSearch.vue";
 import School from "@/components/new/School.vue";
@@ -194,6 +205,7 @@ export default {
     Escorts,
     AllApplication,
     CurrentApplication,
+    AccountView,
     ApplicationView,
     ApplicationSearch,
     OtherCause,
@@ -266,6 +278,10 @@ export default {
 
         case "CurrentApplication":
           this.change("CurrentApplication", back);
+          break;
+
+        case "AccountView":
+          this.change("AccountView", back);
           break;
 
         case "School":
