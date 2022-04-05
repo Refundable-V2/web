@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS vue-builder
+FROM node:14-alpine AS vue-builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
